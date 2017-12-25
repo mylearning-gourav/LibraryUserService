@@ -5,8 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
+//@EnableEurekaClient
+@EnableDiscoveryClient
 @EnableGlobalMethodSecurity
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class ApplicationBoot extends SpringBootServletInitializer{
