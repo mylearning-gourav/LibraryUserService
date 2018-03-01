@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 //@EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableGlobalMethodSecurity
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class ApplicationBoot extends SpringBootServletInitializer{
