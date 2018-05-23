@@ -5,11 +5,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import static org.hamcrest.Matchers.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -19,6 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.userservice.controller.AccessTypeController;
+import com.userservice.service.AccessTypeService;
 
 /**
  * @author Gourav Singh
@@ -33,10 +37,13 @@ public class AccessTypeControllerTest {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
+	@MockBean
+	private AccessTypeService accessTypeService;
+	
 	@Before
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-//				.alwaysDo(MockMvcResultHandlers.print())
+				.alwaysDo(MockMvcResultHandlers.print())
 				.build();
 	}
 	
@@ -55,7 +62,25 @@ public class AccessTypeControllerTest {
 		.andExpect(content().contentType("application/json;charset=UTF-8"))
 		.andExpect(jsonPath("$.statusCode", is(2000)))
 		.andExpect(jsonPath("$.statusMessage", is("Success")))
-		.andExpect(jsonPath("$.result").isEmpty());
+		.andExpect(jsonPath("$.result", hasSize(1)));
+//		.andExpect(jsonPath("$.result").isEmpty());
+	}
+	
+	/**
+	 * Get Access Types Params Controller Test
+	 * @param
+	 * @return 
+	 * @throws Exception
+	 */
+	@Test
+	public void getAccessTypesInputParam() throws Exception {
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/accesstypeservices/getallaccesstypes?ids=1,2");
+		
+		this.mockMvc.perform(requestBuilder)
+		.andExpect(jsonPath("$.statusCode", is(2000)))
+		.andExpect(jsonPath("$.statusMessage", is("Success")))
+		.andExpect(jsonPath("$.result", hasSize(1)));
+//		.andExpect(jsonPath("$.result.Access Types", hasSize(2)));
 	}
 	
 	/**
@@ -64,13 +89,15 @@ public class AccessTypeControllerTest {
 	 * @return 
 	 * @throws Exception
 	 */
-	@Test
-	public void getAccessTypesInputParam() throws Exception {
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/accesstypeservices/getallaccesstypes?id=1");
+	/*@Test
+	public void addAccessTypesTest() throws Exception {
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/accesstypeservices/updateaccesstype");
 		
 		this.mockMvc.perform(requestBuilder)
-		.andExpect(status().is(200));
-	}
+		.andExpect(jsonPath("$.statusCode", is(2000)))
+		.andExpect(jsonPath("$.statusMessage", is("Success")))
+		.andExpect(jsonPath("$.result", hasSize(1)));
+	}*/
 	
 	/**
 	 * Test case for bad get url requests

@@ -25,7 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.userservice.bean.ResultBean;
 import com.userservice.controller.UserController;
 import com.userservice.entity.User;
-import com.userservice.exception.BadRequestException;
 import com.userservice.service.UserService;
 
 @RunWith(SpringRunner.class)

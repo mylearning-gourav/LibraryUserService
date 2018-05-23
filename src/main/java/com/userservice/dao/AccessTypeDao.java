@@ -16,15 +16,31 @@ public interface AccessTypeDao {
 	 * @return List
 	 * @throws Exception
 	 */
-	public ArrayList<Object> getAccessTypes() throws Exception;
+	public ArrayList<Object> getAllAccessTypes() throws Exception;
 	
 	/**
-	 * Get specific Access Types
+	 * Get specific Access Types by id
 	 * @param Integer[]
 	 * @return List
 	 * @throws Exception
 	 */
-	public ArrayList<Object> getAccessTypes(Integer... ids) throws Exception;
+	public ArrayList<Object> getAccessTypes(Integer[] ids) throws Exception;
+	
+	/**
+	 * Get specific Access Types by type
+	 * @param String[]
+	 * @return List
+	 * @throws Exception
+	 */
+	public ArrayList<Object> getAccessTypes(String[] types) throws Exception;
+	
+	/**
+	 * Get specific Access Types by active status
+	 * @param Boolean
+	 * @return List
+	 * @throws Exception
+	 */
+	public ArrayList<Object> getAccessTypes(Boolean active) throws Exception;
 	
 	/**
 	 * Add Access Types

@@ -3,6 +3,10 @@ package com.userservice.bean;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ResultBean {
 	
 	private int statusCode;
@@ -17,6 +21,12 @@ public class ResultBean {
 	public ResultBean(int statusCode, String statusMessage) {
 		this.statusCode = statusCode;
 		this.statusMessage = statusMessage;
+	}
+	
+	public ResultBean(int statusCode, String statusMessage, HashMap<String, ArrayList<Object>> result) {
+		this.statusCode = statusCode;
+		this.statusMessage = statusMessage;
+		this.result = result;
 	}
 	
 	public int getStatusCode() {

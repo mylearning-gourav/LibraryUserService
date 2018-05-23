@@ -18,11 +18,13 @@ public class AccessType {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name="id", updatable = false, nullable = false)
 	private int accessTypeId;
-	@Column(name="access_type")
+	@Column(name="access_type", nullable = false)
 	private String accessType;
+	@Column(nullable = true)
 	private String description;
+	@Column(nullable = false)
 	private boolean active;
 	
 	public int getAccessTypeId() {
@@ -49,6 +51,4 @@ public class AccessType {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-
 }
