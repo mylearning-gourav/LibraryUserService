@@ -20,17 +20,17 @@ import com.userservice.entity.AccessType;
 @Repository("accessTypeDao")
 public class AccessTypeDaoImpl implements AccessTypeDao{
 	
-	final static Logger logger = Logger.getLogger(AccessTypeDaoImpl.class);
+	/*final static Logger logger = Logger.getLogger(AccessTypeDaoImpl.class);
 	
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	/**
+	*//**
 	 * Get All Access Types
 	 * @param
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAllAccessTypes() throws Exception {
 		logger.debug("Get All Access types Dao");
@@ -38,12 +38,12 @@ public class AccessTypeDaoImpl implements AccessTypeDao{
 		return (ArrayList<Object>) entityManager.createQuery(hsqlSelectQuery).getResultList();
 	}
 
-	/**
+	*//**
 	 * Get specific Access Types
 	 * @param Integer[]
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAccessTypes(Integer[] ids) throws Exception {
 		logger.debug("Get All Access types with Ids Dao");
@@ -70,12 +70,12 @@ public class AccessTypeDaoImpl implements AccessTypeDao{
 		return (ArrayList<Object>) entityManager.createQuery(hsqlSelectQuery.toString()).getResultList();
 	}
 	
-	/**
+	*//**
 	 * Get specific Access Types by type
 	 * @param Integer[]
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	public ArrayList<Object> getAccessTypes(String[] types) throws Exception {
 		logger.debug("Get All Access types with types Dao");
 		StringBuilder hsqlSelectQuery = 
@@ -100,12 +100,12 @@ public class AccessTypeDaoImpl implements AccessTypeDao{
 		return (ArrayList<Object>) entityManager.createQuery(hsqlSelectQuery.toString()).getResultList();
 	}
 	
-	/**
+	*//**
 	 * Get specific Access Types by active status
 	 * @param Boolean
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	public ArrayList<Object> getAccessTypes(Boolean active) throws Exception {
 		logger.debug("Get All Access types Dao with active");
 		StringBuilder hsqlSelectQuery = 
@@ -113,28 +113,28 @@ public class AccessTypeDaoImpl implements AccessTypeDao{
 		return (ArrayList<Object>) entityManager.createQuery(hsqlSelectQuery.toString()).getResultList(); 
 	}
 
-	/**
+	*//**
 	 * Add Access Types
 	 * @param AccessType
 	 * @return 
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public void addAccessType(AccessType accessType) throws Exception {
 		logger.debug("Add Access Type Dao");
 		entityManager.persist(accessType);
 	}
 
-	/**
+	*//**
 	 * Update Access Types
 	 * @param AccessType
 	 * @return 
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public void updateAccessType(AccessType accessType) throws Exception {
 		logger.debug("Update Access Type Dao");
 		entityManager.merge(accessType);
-	}
+	}*/
 
 }

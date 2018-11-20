@@ -48,7 +48,7 @@ public class UserControllerTest {
 	ArrayList<Object> userList = new ArrayList<Object>();
 	Map<String, ArrayList<Object>> mapList = new HashMap<String, ArrayList<Object>>();
 	
-	@Before
+	/*@Before
 	public void setup() {
 		user = new User(1, "Gourav Singh", "gouravsingh@gmail.com", "gourav", true);
 		userList.add(user);
@@ -56,7 +56,7 @@ public class UserControllerTest {
 		resultBean = new ResultBean(100, "Success", (HashMap<String, ArrayList<Object>>) mapList);
 //		this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(applicationContext).build();
-	}
+	}*/
 
 	@Test
 	public void getAllUsersTest() throws Exception {

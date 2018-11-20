@@ -14,17 +14,17 @@ import com.userservice.exception.DuplicateDataException;
 @Service("accessTypeService")
 public class AccessTypeServiceImpl implements AccessTypeService{
 	
-	final static Logger logger = Logger.getLogger(AccessTypeDaoImpl.class);
+	/*final static Logger logger = Logger.getLogger(AccessTypeDaoImpl.class);
 	
 	@Autowired
 	private AccessTypeDao accessTypeDao;
 
-	/**
+	*//**
 	 * Update Access Types
 	 * @param AccessType
 	 * @return boolean
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public void updateAccessType(AccessType accessType) throws Exception {
 		logger.debug("Update Access Type Service");
@@ -42,52 +42,52 @@ public class AccessTypeServiceImpl implements AccessTypeService{
 		}
 	}
 
-	/**
+	*//**
 	 * Get All Access Types
 	 * @param
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAllAccessTypes() throws Exception {
 		logger.debug("Get All Access types Service");
 		return accessTypeDao.getAllAccessTypes();
 	}
 
-	/**
+	*//**
 	 * Get specific Access Types by id
 	 * @param Integer[]
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAccessTypes(Integer[] ids) throws Exception {
 		logger.debug("Get All Access types with Ids Service");
 		return accessTypeDao.getAccessTypes(ids);
 	}
 
-	/**
+	*//**
 	 * Get specific Access Types by type
 	 * @param String[]
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAccessTypes(String[] types) throws Exception {
 		logger.debug("Get All Access types with types Service");
 		return accessTypeDao.getAccessTypes(types);
 	}
 
-	/**
+	*//**
 	 * Get specific Access Types by active status
 	 * @param Boolean
 	 * @return List
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public ArrayList<Object> getAccessTypes(Boolean active) throws Exception {
 		logger.debug("Update Access Type Service");
 		return accessTypeDao.getAccessTypes(active);
-	}
+	}*/
 
 }
