@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.userservice.bean.ResultBean;
 import com.userservice.entity.User;
+import com.userservice.exception.BadRequestException;
 import com.userservice.service.UserService;
 
 @RestController
@@ -30,15 +31,21 @@ public class UserController {
 		return resultBean;
 	}
 	
-	@RequestMapping(value="/registeruser", method=RequestMethod.GET)
+	/**
+	 * Register New User
+	 * @param user
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/registeruser", method=RequestMethod.POST)
 //	@ApiOperation(value="Register new user", response=ResultBean.class)
 	public ResultBean registerNewUser(User user) throws Exception {
-		userService.registerNewUser(user);
+//		userService.registerNewUser(user);
 		ResultBean resultBean = new ResultBean();
 		return resultBean;
 	}
 	
-	@RequestMapping(value="/updateuser", method=RequestMethod.GET)
+	/*@RequestMapping(value="/updateuser", method=RequestMethod.GET)
 //	@ApiOperation(value="Update user", response=ResultBean.class)
 	public ResultBean updateUser(User user) throws Exception{
 		userService.updateUser(user);
@@ -80,5 +87,29 @@ public class UserController {
 			ResultBean resultBean = new ResultBean(3002, "User Authentication Failed");
 			return resultBean;
 		}
+	}*/
+	
+	/**
+	 * All Other Get Request
+	 * @param
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/**", method=RequestMethod.GET)
+	public void allOtherAccessTypeGetRequest() throws Exception {
+//		logger.debug("Bad Get Request Controller");
+		throw new BadRequestException();
+	}
+	
+	/**
+	 * All Other Post Request
+	 * @param
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/**", method=RequestMethod.POST)
+	public void allOtherAccessTypePostRequest() throws Exception {
+//		logger.debug("Bad Post Request Controller");
+		throw new BadRequestException();
 	}
 }

@@ -43,22 +43,22 @@ public class UserControllerTest {
 	@MockBean
 	private UserService userService;
 	
-	User user = null;
+	/*User user = null;
 	ResultBean resultBean  = null;
 	ArrayList<Object> userList = new ArrayList<Object>();
-	Map<String, ArrayList<Object>> mapList = new HashMap<String, ArrayList<Object>>();
+	Map<String, ArrayList<Object>> mapList = new HashMap<String, ArrayList<Object>>();*/
 	
-	/*@Before
+	@Before
 	public void setup() {
-		user = new User(1, "Gourav Singh", "gouravsingh@gmail.com", "gourav", true);
+		/*user = new User(1, "Gourav Singh", "gouravsingh@gmail.com", "gourav", true);
 		userList.add(user);
 		mapList.put("User List", userList);
-		resultBean = new ResultBean(100, "Success", (HashMap<String, ArrayList<Object>>) mapList);
+		resultBean = new ResultBean(100, "Success", (HashMap<String, ArrayList<Object>>) mapList);*/
 //		this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(applicationContext).build();
-	}*/
+	}
 
-	@Test
+	/*@Test
 	public void getAllUsersTest() throws Exception {
 		
 		// studentService.addCourse to respond back with mockCourse
@@ -67,25 +67,30 @@ public class UserControllerTest {
 		// Send course as body to /students/Student1/courses
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
 			.get("/userservices/getallusers");
-				/*.accept(MediaType.APPLICATION_JSON).content(exampleCourseJson)
-				.contentType(MediaType.APPLICATION_JSON);*/
+				.accept(MediaType.APPLICATION_JSON).content(exampleCourseJson)
+				.contentType(MediaType.APPLICATION_JSON);
 		
 		this.mockMvc.perform(requestBuilder)
 			.andExpect(status().is(200))
 			.andExpect(content().contentType("application/json;charset=UTF-8"));
-
-		/*MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-
-		MockHttpServletResponse response = result.getResponse();
-
-		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
-
-		assertEquals("http://localhost/students/Student1/courses/1",
-				response.getHeader(HttpHeaders.LOCATION));*/
-		
-		/*this.mockMvc.perform(get("/userservices/getallusers"))
-			.andExpect(status().is(200))
-			.andExpect(content().contentType("application/json;charset=UTF-8"));*/
+	}*/
+	
+	/*
+	 * Test case for register user get
+	 */
+	@Test
+	public void registerUserGet() throws Exception {
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/userservices/registeruser");
+		this.mockMvc.perform(requestBuilder).andExpect(status().isBadRequest());
+	}
+	
+	/*
+	 * Test case for register user post
+	 */
+	@Test
+	public void registerUserPost() throws Exception {
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/userservices/registeruser");
+		this.mockMvc.perform(requestBuilder).andExpect(status().isOk());
 	}
 
 	/*
@@ -105,7 +110,7 @@ public class UserControllerTest {
 	@Test
 	public void noRequestFoundPost() throws Exception {	
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.post("/hgh/aassdd");
+				.post("/badurl/badurl");
 		this.mockMvc.perform(requestBuilder)
 			.andExpect(status().isNotFound());
 	}
@@ -116,7 +121,7 @@ public class UserControllerTest {
 	@Test
 	public void badGetRequest() throws Exception {
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/userservices/aassdd");
+				.get("/userservices/badurl");
 		this.mockMvc.perform(requestBuilder)
 			.andExpect(status().isBadRequest());
 	}
@@ -127,7 +132,7 @@ public class UserControllerTest {
 	@Test
 	public void badPostRequest() throws Exception {
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.post("/userservices/aassdd");
+				.post("/userservices/badurl");
 		this.mockMvc.perform(requestBuilder)
 			.andExpect(status().isBadRequest());
 	}
