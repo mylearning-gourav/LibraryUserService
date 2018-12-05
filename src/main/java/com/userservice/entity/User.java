@@ -19,6 +19,8 @@ public class User {
 	private String email;
 	private String password;
 	private boolean active;
+	@Column(name="role_id")
+	private int roleId;
 	
 	public int getUserId() {
 		return userId;
@@ -49,5 +51,11 @@ public class User {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public int getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 }

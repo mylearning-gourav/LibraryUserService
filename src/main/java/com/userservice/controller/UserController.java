@@ -40,7 +40,8 @@ public class UserController {
 	@RequestMapping(value="/registeruser", method=RequestMethod.POST)
 //	@ApiOperation(value="Register new user", response=ResultBean.class)
 	public ResultBean registerNewUser(User user) throws Exception {
-//		userService.registerNewUser(user);
+		user.setRoleId(1);
+		userService.registerNewUser(user);
 		ResultBean resultBean = new ResultBean();
 		return resultBean;
 	}
