@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.userservice.bean.ResultBean;
-import com.userservice.dao.AccessTypeDaoImpl;
 
 /**
  * @author Gourav Singh

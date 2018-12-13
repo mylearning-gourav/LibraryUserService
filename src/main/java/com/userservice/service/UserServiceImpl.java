@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public ArrayList<Object> getAllUser() throws Exception {
-		return userDao.getAllUser();
+	public ArrayList<Object> getUsers(User user) throws Exception {
+		return userDao.getUsers(user);
 	}
 
 	public void registerNewUser(User user) throws Exception {

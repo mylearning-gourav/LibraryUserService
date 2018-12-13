@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.userservice.entity.User;
 
 public interface UserDao {
-	public ArrayList<Object> getAllUser() throws Exception;
+	public ArrayList<Object> getUsers(User user) throws Exception;
 
 	public void registerNewUser(User user) throws Exception;
 

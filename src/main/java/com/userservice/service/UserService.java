@@ -6,7 +6,7 @@ import com.userservice.entity.User;
 
 public interface UserService {
 
-	public ArrayList<Object> getAllUser() throws Exception;
+	public ArrayList<Object> getUsers(User user) throws Exception;
 
 	public void registerNewUser(User user) throws Exception;
 

@@ -16,3 +16,6 @@ CREATE TABLE `library_users`.`roles` (
   PRIMARY KEY(`id`)
 )
 ENGINE = InnoDB;
+
+INSERT INTO `library_users`.`roles` (`id`, `role`) VALUES ('1', 'User');
+INSERT INTO `library_users`.`roles` (`id`, `role`) VALUES ('2', 'Admin');

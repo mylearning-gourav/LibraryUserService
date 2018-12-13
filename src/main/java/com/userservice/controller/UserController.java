@@ -21,12 +21,18 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/getallusers", method=RequestMethod.GET)
+	/**
+	 * Get Users
+	 * @param user
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/getusers", method=RequestMethod.GET)
 //	@ApiOperation(value = "View a list of users", response = ResultBean.class)
-	public ResultBean getAllUser() throws Exception {
+	public ResultBean getUsers(User user) throws Exception {
 		ResultBean resultBean = new ResultBean();
 		HashMap<String, ArrayList<Object>> userResultMap = new HashMap<String, ArrayList<Object>>();
-		userResultMap.put("Result", userService.getAllUser());
+		userResultMap.put("Result", userService.getUsers(user));
 		resultBean.setResult(userResultMap);
 		return resultBean;
 	}
@@ -91,26 +97,14 @@ public class UserController {
 	}*/
 	
 	/**
-	 * All Other Get Request
+	 * All Other Request
 	 * @param
 	 * @return ResultBean
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/**", method=RequestMethod.GET)
-	public void allOtherAccessTypeGetRequest() throws Exception {
+	@RequestMapping(value="/**", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+	public void allOtherAccessTypeOtherRequest() throws Exception {
 //		logger.debug("Bad Get Request Controller");
-		throw new BadRequestException();
-	}
-	
-	/**
-	 * All Other Post Request
-	 * @param
-	 * @return ResultBean
-	 * @throws Exception
-	 */
-	@RequestMapping(value="/**", method=RequestMethod.POST)
-	public void allOtherAccessTypePostRequest() throws Exception {
-//		logger.debug("Bad Post Request Controller");
 		throw new BadRequestException();
 	}
 }
