@@ -73,14 +73,15 @@ public class GlobalExceptionHandler {
 	 * @return ResultBean
 	 * @throws 
 	 */
-	@ExceptionHandler(DuplicateDataException.class)
-	@ResponseStatus(value=HttpStatus.BAD_REQUEST, reason = "Duplicate Data Parameter")
-	public @ResponseBody ResultBean handleDuplicateDataException() {
+	@ExceptionHandler(DuplicateEmailException.class)
+	@ResponseStatus(value=HttpStatus.BAD_REQUEST, reason = "Email ID Already Exists")
+//	public @ResponseBody ResultBean handleDuplicateDataException() {
+	public void handleDuplicateDataException() {
 		logger.error("DuplicateDataException : Duplicate Data Parameter");
-		ResultBean resultBean = new ResultBean();
+		/*ResultBean resultBean = new ResultBean();
 		resultBean.setStatusCode(3003);
-		resultBean.setStatusMessage("Bad Request");
-		return resultBean;
+		resultBean.setStatusMessage("Email ID Already Exists");
+		return resultBean;*/
 	}
 
 }

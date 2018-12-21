@@ -27,7 +27,7 @@ public class UserController {
 	 * @return ResultBean
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/getusers", method=RequestMethod.GET)
+	@RequestMapping(value="/getusers", method=RequestMethod.POST)
 //	@ApiOperation(value = "View a list of users", response = ResultBean.class)
 	public ResultBean getUsers(User user) throws Exception {
 		ResultBean resultBean = new ResultBean();
@@ -52,7 +52,13 @@ public class UserController {
 		return resultBean;
 	}
 	
-	/*@RequestMapping(value="/updateuser", method=RequestMethod.GET)
+	/**
+	 * Update New User
+	 * @param user
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/updateuser", method=RequestMethod.POST)
 //	@ApiOperation(value="Update user", response=ResultBean.class)
 	public ResultBean updateUser(User user) throws Exception{
 		userService.updateUser(user);
@@ -60,7 +66,7 @@ public class UserController {
 		return resultBean;
 	}
 	
-	@RequestMapping(value="/updateactivestatus", method=RequestMethod.GET)
+	/*@RequestMapping(value="/updateactivestatus", method=RequestMethod.GET)
 //	@ApiOperation(value="Update user status", response=ResultBean.class)
 	public ResultBean updateActiveStatus(int userId, boolean active) throws Exception {
 		userService.updateActiveStatus(userId, active);

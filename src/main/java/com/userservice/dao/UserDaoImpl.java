@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.userservice.entity.User;
+import com.userservice.exception.DuplicateEmailException;
 
 @Transactional
 @Repository("userDao")
@@ -23,6 +24,12 @@ public class UserDaoImpl implements UserDao{
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/**
+	 * Get Users
+	 * @param user
+	 * @return ArrayList
+	 * @throws Exception
+	 */
 	public ArrayList<Object> getUsers(User user) throws Exception {
 		
 		CriteriaBuilder qb = entityManager.getCriteriaBuilder();
@@ -62,13 +69,26 @@ public class UserDaoImpl implements UserDao{
 		return (ArrayList<Object>) entityManager.createQuery(getUsersHsql).getResultList();*/
 	}
 
+	/**
+	 * Add New Users
+	 * @param user
+	 * @return 
+	 * @throws Exception
+	 */
 	public void registerNewUser(User user) throws Exception {
 		entityManager.persist(user);
 		entityManager.flush();
 	}
 
+	/**
+	 * Update Users
+	 * @param user
+	 * @return 
+	 * @throws Exception
+	 */
 	public void updateUser(User user) throws Exception {
 		entityManager.merge(user);
+		entityManager.flush();
 	}
 
 	public void updateActiveStatus(int userId, boolean active) throws Exception {
@@ -95,4 +115,20 @@ public class UserDaoImpl implements UserDao{
 		}
 	}
 
+	/**
+	 * Check Duplicate Email
+	 * @param email
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public boolean checkDuplicateEmail(String email) throws Exception {
+		Query query = entityManager.createQuery("SELECT count(*) as resultCount FROM User WHERE email = :email");
+		query.setParameter("email", email);
+		
+		long count = (Long) query.getSingleResult();
+		if(count == 0) {
+			return true;
+		}
+		throw new DuplicateEmailException();
+	}
 }
