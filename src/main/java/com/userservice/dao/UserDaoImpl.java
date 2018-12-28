@@ -87,15 +87,37 @@ public class UserDaoImpl implements UserDao{
 	 * @throws Exception
 	 */
 	public void updateUser(User user) throws Exception {
-		entityManager.merge(user);
-		entityManager.flush();
+		/*entityManager.merge(user);
+		entityManager.flush();*/
+		StringBuilder queryString = new StringBuilder("UPDATE User SET ");
+		if(user.getName() != null && !user.getName().isEmpty()) {
+			queryString.append("name=:name");
+		}
+		queryString.append(" WHERE id=:userId and email=:email");
+		Query query = entityManager.createQuery(queryString.toString());
+		query.setParameter("name", user.getName());
+		query.setParameter("userId", user.getUserId());
+		query.setParameter("email", user.getEmail());
+		query.executeUpdate();
 	}
 
+	/**
+	 * Update Active Status
+	 * @param userId, active
+	 * @return 
+	 * @throws Exception
+	 */
 	public void updateActiveStatus(int userId, boolean active) throws Exception {
-		User user = new User();
+		/*User user = new User();
 		user.setUserId(userId);
 		user.setActive(active);
-		entityManager.merge(user);
+		entityManager.merge(user);*/
+		
+		StringBuilder queryString = new StringBuilder("UPDATE User SET active=:active WHERE id=:userId");
+		Query query = entityManager.createQuery(queryString.toString());
+		query.setParameter("active", active);
+		query.setParameter("userId", userId);
+		query.executeUpdate();
 	}
 
 	public boolean getActiveStatus(int userId) throws Exception {
@@ -130,5 +152,20 @@ public class UserDaoImpl implements UserDao{
 			return true;
 		}
 		throw new DuplicateEmailException();
+	}
+
+	/**
+	 * Update Role
+	 * @param userId, active
+	 * @return 
+	 * @throws Exception
+	 */
+	public void updateRole(int userId, int roleId) throws Exception {
+		StringBuilder queryString = new StringBuilder("UPDATE User SET roleId=:roleId WHERE id=:userId");
+		Query query = entityManager.createQuery(queryString.toString());
+		query.setParameter("roleId", roleId);
+		query.setParameter("userId", userId);
+		query.executeUpdate();
+		
 	}
 }

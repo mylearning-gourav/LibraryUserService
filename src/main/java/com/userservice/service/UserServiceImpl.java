@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.checkDuplicateEmail(email);
 	}
 
+	public void updateRole(int userId, int roleId) throws Exception {
+		userDao.updateRole(userId, roleId);
+		
+	}
+
 }

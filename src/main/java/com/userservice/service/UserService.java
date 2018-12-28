@@ -13,6 +13,8 @@ public interface UserService {
 	public void updateUser(User user) throws Exception;
 
 	public void updateActiveStatus(int userId, boolean active) throws Exception;
+	
+	public void updateRole(int userId, int roleId) throws Exception;
 
 	public boolean getActiveStatus(int userId) throws Exception;
 
