@@ -125,9 +125,15 @@ public class UserDaoImpl implements UserDao{
 		return user.isActive();
 	}
 
-	public boolean authenticateUser(String name, String password) throws Exception {
-		Query query = entityManager.createQuery("SELECT password FROM User WHERE name = ?");
-		query.setParameter(1, name);
+	/**
+	 * Authenticate User
+	 * @param email, password
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public boolean authenticateUser(String email, String password) throws Exception {
+		Query query = entityManager.createQuery("SELECT password FROM User WHERE email = :email");
+		query.setParameter("email", email);
 		String pass = (String) query.getSingleResult();
 		if(pass != null && !pass.isEmpty() && pass.equals(password)) {
 			return true;

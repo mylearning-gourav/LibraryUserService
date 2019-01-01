@@ -66,6 +66,12 @@ public class UserController {
 		return resultBean;
 	}
 	
+	/**
+	 * Update Active Status
+	 * @param userId, active
+	 * @return ResultBean
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/updateactivestatus", method=RequestMethod.POST)
 //	@ApiOperation(value="Update user status", response=ResultBean.class)
 	public ResultBean updateActiveStatus(int userId, boolean active) throws Exception {
@@ -74,6 +80,12 @@ public class UserController {
 		return resultBean;
 	}
 	
+	/**
+	 * Update Role
+	 * @param userId, roleId
+	 * @return ResultBean
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/updaterole", method=RequestMethod.POST)
 //	@ApiOperation(value="Update user status", response=ResultBean.class)
 	public ResultBean updateRole(int userId, int roleId) throws Exception {
@@ -94,12 +106,18 @@ public class UserController {
 			ResultBean resultBean = new ResultBean(3001, "User is Inactive");
 			return resultBean;
 		}
-	}
+	}*/
 	
-	@RequestMapping(value="/authenticateuser", method=RequestMethod.GET)
+	/**
+	 * Authenticate User Request
+	 * @param email, password
+	 * @return ResultBean
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/authenticateuser", method=RequestMethod.POST)
 //	@ApiOperation(value="Authenticate user", response=ResultBean.class)
-	public ResultBean authenticateUser(String name, String password) throws Exception {
-		Boolean status = userService.authenticateUser(name, password);
+	public ResultBean authenticateUser(String email, String password) throws Exception {
+		Boolean status = userService.authenticateUser(email, password);
 		if(status) {
 			ResultBean resultBean = new ResultBean(2002, "User is Authenticate");
 			return resultBean;
@@ -108,7 +126,7 @@ public class UserController {
 			ResultBean resultBean = new ResultBean(3002, "User Authentication Failed");
 			return resultBean;
 		}
-	}*/
+	}
 	
 	/**
 	 * All Other Request

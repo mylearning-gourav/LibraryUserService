@@ -18,7 +18,7 @@ public interface UserService {
 
 	public boolean getActiveStatus(int userId) throws Exception;
 
-	public boolean authenticateUser(String name, String password) throws Exception;
+	public boolean authenticateUser(String email, String password) throws Exception;
 	
 	public boolean checkDuplicateEmail(String email) throws Exception;
 

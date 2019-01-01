@@ -50,6 +50,12 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUser(user);
 	}
 
+	/**
+	 * Update Active Status
+	 * @param userId, active
+	 * @return 
+	 * @throws Exception
+	 */
 	public void updateActiveStatus(int userId, boolean active) throws Exception {
 		userDao.updateActiveStatus(userId, active);
 	}
@@ -58,8 +64,14 @@ public class UserServiceImpl implements UserService {
 		return userDao.getActiveStatus(userId);
 	}
 
-	public boolean authenticateUser(String name, String password) throws Exception {
-		return userDao.authenticateUser(name, password);
+	/**
+	 * Authenticate User
+	 * @param email, password
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public boolean authenticateUser(String email, String password) throws Exception {
+		return userDao.authenticateUser(email, password);
 	}
 
 	/**
@@ -72,6 +84,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.checkDuplicateEmail(email);
 	}
 
+	/**
+	 * Update Role
+	 * @param userId, roleId
+	 * @return 
+	 * @throws Exception
+	 */
 	public void updateRole(int userId, int roleId) throws Exception {
 		userDao.updateRole(userId, roleId);
 		
