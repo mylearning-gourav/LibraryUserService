@@ -119,7 +119,7 @@ public class UserController {
 	public ResultBean authenticateUser(String email, String password) throws Exception {
 		Boolean status = userService.authenticateUser(email, password);
 		if(status) {
-			ResultBean resultBean = new ResultBean(2002, "User is Authenticate");
+			ResultBean resultBean = new ResultBean(2002, "User is Authenticated");
 			return resultBean;
 		}
 		else {

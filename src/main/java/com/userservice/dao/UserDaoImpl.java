@@ -120,10 +120,10 @@ public class UserDaoImpl implements UserDao{
 		query.executeUpdate();
 	}
 
-	public boolean getActiveStatus(int userId) throws Exception {
+	/*public boolean getActiveStatus(int userId) throws Exception {
 		User user = entityManager.find(User.class, userId);
 		return user.isActive();
-	}
+	}*/
 
 	/**
 	 * Authenticate User

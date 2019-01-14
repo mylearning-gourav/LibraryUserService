@@ -60,9 +60,9 @@ public class UserServiceImpl implements UserService {
 		userDao.updateActiveStatus(userId, active);
 	}
 
-	public boolean getActiveStatus(int userId) throws Exception {
+	/*public boolean getActiveStatus(int userId) throws Exception {
 		return userDao.getActiveStatus(userId);
-	}
+	}*/
 
 	/**
 	 * Authenticate User

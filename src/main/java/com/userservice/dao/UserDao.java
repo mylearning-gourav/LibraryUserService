@@ -15,7 +15,7 @@ public interface UserDao {
 	
 	public void updateRole(int userId, int roleId) throws Exception;
 
-	public boolean getActiveStatus(int userId) throws Exception;
+//	public boolean getActiveStatus(int userId) throws Exception;
 
 	public boolean authenticateUser(String email, String password) throws Exception;
 	
